@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     
@@ -25,6 +27,60 @@
         </ul>
     </form>
     </div>
+
+    <div class="container mt -5">
+
+    <button id="boton1" class="btn btn-info mb-2">BCRA</button>
+    <div id="lista-api"></div>
+    </div>
+
+    <script>
+        
+        $("#boton1").on("click", leerApi);
+
+
+        function leerApi() {
+            alert('Llamando a la API del BCRA, espere un momento');
+
+            $.ajax({
+                url: 'http://api.estadisticasbcra.com/usd_of',
+                type: 'GET',
+                data:{d: "2004-12-31"},
+                
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTIxOTM3OTcsInR5cGUiOiJleHRlcm5hbCIsInVzZXIiOiJsb29vLjg3QGhvdG1haWwuY29tIn0.J5v2XiWNLxJZh5q6KBtZqvQC3CtoqzNWmbd0fAMtyZY9YblCTdtYQQwXCECS6oFqttStD-NRkTpo6Der6qe8og');
+                },
+
+                
+                success: function (respuesta) {
+
+                    
+                    console.log(respuesta);
+
+                    
+                    var listaAPI = $("#lista-api");
+
+                    $.each(respuesta, function (index, miembro) {
+                        listaAPI.append(
+                            '<div>' +
+                            '<p>' + 'Fecha Cotizacion: ' + miembro.d + '<br>' +
+                            'Importe: $ ' + miembro.v + '<br>' +
+                            '<br>' + '______________________________________' +
+                            '</div>'
+                        );
+                    });
+                }, 
+
+                error: function () {
+                    alert("Hubo un error");
+                    console.log("Error al leer la API");
+                }
+
+            });
+        }
+    </script>
+
+
  
     
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>

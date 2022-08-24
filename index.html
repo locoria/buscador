@@ -9,19 +9,19 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     
-    <title>Busador de Promociones </title>
+    <title >Busador de Promociones </title>
 </head>
 
 
 <body>
     <div class="container mt -5">
       
-        <h1>Buscador de Promociones  </h1>
+        <h1 class="text-danger">Buscador de Promociones  </h1>
     
         <form>
         <input type="text" id="promocion" placeholder="Ingresa promocion" class="form-control my-2">
         
-        <button class="btn btn-info mb-2" id="boton">Buscar </button>
+        <button class="btn btn-danger mb-2  " id="boton">Buscar </button>
         <ul id="resultado">
             <li></li>
         </ul>
@@ -29,14 +29,18 @@
     </div>
 
     <div class="container mt -5">
-
-    <button id="boton1" class="btn btn-info mb-2">BCRA</button>
-    <div id="lista-api"></div>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Accede a normativas del BCRA</h5>
+              <a href="#" class="btn btn-danger">Ir a BCRA </a>
+            </div>
+          </div>
+   
     </div>
 
     <script>
         
-        $("#boton1").on("click", leerApi);
+        $("#").on("click", leerApi);
 
 
         function leerApi() {

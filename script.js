@@ -55,7 +55,7 @@ boton.addEventListener('click' , filtrar , () => {
 }
 )
 
-const boton = document.getElementById("boton")
+const boton1 = document.getElementById("#")
 
 boton.addEventListener('click' , () => {
     Toastify({
@@ -74,5 +74,5 @@ boton.addEventListener('click' , () => {
       }).showToast();
         
     }
-})
+)
 
